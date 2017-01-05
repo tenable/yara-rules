@@ -7,7 +7,8 @@ rule PAS_TOOL_PHP_WEB_KIT
 
     strings:
         $php = "<?php"
-        $base64decode = /\='base'\.\(\d+\*\d+\)\.'_de'\.'code'/ $strreplace = "(str_replace("
+        $base64decode = /\='base'\.\(\d+\*\d+\)\.'_de'\.'code'/ 
+        $strreplace = "(str_replace("
         $md5 = ".substr(md5(strrev("
         $gzinflate = "gzinflate"
         $cookie = "_COOKIE"
