@@ -15,3 +15,35 @@ rule eval_statement
         all of them
 }
 
+rule hardcoded_urldecode
+{
+    meta:
+        description = "PHP with hard coded urldecode call"
+        family = "PHP.Obfuscated"
+        filetype = "PHP"
+        hash = "79b22d7dbf49d8cfdc564936c8a6a1e2"
+        hash = "38dc8383da0859dca82cf0c943dbf16d"
+
+    strings:
+        $obf = /urldecode[\t ]*\([\t ]*'(%[0-9a-fA-F][0-9a-fA-F])+'[\t ]*\)/
+
+    condition:
+        all of them
+}
+
+rule chr_obfuscation
+{
+    meta:
+        description = "PHP with string building using hard coded values in chr()"
+        family = "PHP.Obfuscated"
+        filetype = "PHP"
+        hash = "d771409e152d0fabae45ea192076d45e"
+        hash = "543624bec87272974384c8ab77f2357a"
+        hash = "cf2ab009cbd2576a806bfefb74906fdf"
+
+    strings:
+        $obf = /\$[^=]+=[\t ]*(chr\([0-9]+\)\.?){2,}/
+
+    condition:
+        all of them
+}
